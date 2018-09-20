@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Header from './components/Header';
+import Loading from './components/Loading';
 import {
   PopupboxManager,
   PopupboxContainer
@@ -19,7 +20,7 @@ class App extends Component {
       isOpen: false,
       sections: [],
       current: null,
-      dataRoute: "http://http://unsplash-gallery.herokuapp.com/wordpress/wp-json/sections/v1/post" 
+      dataRoute: "https://unsplash-gallery.herokuapp.com/wordpress/?rest_route=/sections/v1/post" 
     }
   }
 
@@ -94,8 +95,10 @@ class App extends Component {
         <header className="App-header">
           <Header></Header>
         </header>
-
-        <div>
+        {this.state.sections.length == 0 &&
+          <Loading></Loading>
+        }        
+        <div className="main">
           {this.scaledSections.map((level, i) => 
             <div className="columns" key={i}>
                 {level.map((section, j) => 
@@ -113,6 +116,13 @@ class App extends Component {
           )}
         </div>
         
+        <footer>
+          <p>Made with 💙 by <a href="https://snipcart.com/blog/reactjs-wordpress-rest-api-example">Snipcart</a></p>
+          <p>
+            <a href="https://twitter.com/snipcart">Twitter</a> | <a href="https://github.com/snipcart/wordpress-react">GitHub</a> | <a href="https://facebook.com/snipcart">Facebook</a>
+          </p>
+
+        </footer>
         <PopupboxContainer />
     </div>
     );

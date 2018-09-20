@@ -5,11 +5,12 @@ class Header extends Component {
   render() {
     return (
     <div>
-        <nav className="navbar">
-            <div className="navbar-brand">
-                <img src={logo} className="App-logo" alt="logo" />
-            </div>        
-        </nav>
+        <p>
+            <img src={logo} className="App-logo" alt="logo" />
+        </p>
+        <h1 className="App-title">
+            React SPA w/ headless WP
+        </h1>
     </div>
     );
   }
